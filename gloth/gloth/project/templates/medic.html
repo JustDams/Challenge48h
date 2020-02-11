@@ -7,12 +7,10 @@
         </div>
     </div>
 </header>
-{{arrayMed}}
-{{arrayMol}}
 
-<!-- <form method="post" role="medic_form">
-    {{ medic_form.crsf_token }}
-    {{ medic_form.medicament }}
-    {{ medic_form.molecule }}
-</form> -->
-<!-- {% endblock%} -->
+{{arrayMed}}
+
+<form method="post" role="medic_form">
+    {{ medic_form }}
+</form>
+{% endblock%}

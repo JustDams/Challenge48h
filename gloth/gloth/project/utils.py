@@ -82,6 +82,7 @@ def getTreatmentMoleculeId(icd10):
     id = cleanChar(id)
     return id
 
+#MEDICAMENTS
 def getMedicaments(id):
     names = Medication.query.filter_by(molecule_id=id).with_entities(Medication.name).all()
     return names

@@ -5,7 +5,7 @@ from flask import Flask, request, redirect, url_for, render_template, flash
 app = Flask(__name__)
 app.config.from_object("project.config.Config")
 
-from .forms import PatientForm, MedicForm
+from .forms import *
 from .utils import *
 
 @app.route("/", methods=["GET", "POST"])
@@ -40,15 +40,10 @@ def medic():
     arrayMol = []
 
     for i in range(0,len(arrayIdMol)-1):
-        arrayMol += getMolecules(arrayIdMol[i])
-        arrayMed += getMedicaments(arrayIdMol[i])
+        if arrayIdMol[i] != 'None':
+            arrayMol += getMolecules(arrayIdMol[i])
+            arrayMed.append(str(getMedicaments(arrayIdMol[i])).replace("[","").replace("]",""))
 
-    return render_template(
-        "medic.html",
-        name="Ynov",
-        pathology=patho,
-        username=username, 
-        arraymed = arrayMed, 
-        arrayMol = arrayMol,
-        medic_form = form,
-    )
+    form.molecule.
+
+    return render_template("medic.html",name = "Ynov",pathology = patho,username = username,medic_form = form, arrayMed=arrayMed)
