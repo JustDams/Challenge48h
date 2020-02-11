@@ -174,3 +174,24 @@ class TreatmentCis(db.Model):
         self.cis = cis
         self.pathology_name = pathology_name
         self.icd_10 = icd_10
+
+class Medication(db.Model):
+    __tablename__="medication"
+
+    cis = db.Column(db.Integer, primary_key =True, nullable=False)
+    name = db.Column(db.String(), nullable=False)
+    molecule_id = db.Column(db.String(), nullable=True)
+
+    def __init__(self, cis, name, molecule_id) :
+        self.cis = cis
+        self.name = name
+        self.molecule_id = molecule_id
+
+class Molecule(db.Model):
+    __tablename__ = "molecules"
+    id = db.Column(db.Integer(),  primary_key=True)
+    name = db.Column(db.String(), nullable=False)
+    
+    def __init__(self, id, name) :
+        self.id = id
+        self.name = name

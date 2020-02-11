@@ -12,6 +12,6 @@ class PatientForm(FlaskForm):
     submit = SubmitField("Valider")
 
 class MedicForm(FlaskForm):
-    pathology = SelectField("Pathologie", validators=[validators.InputRequired()], id="pathology", choices=pathologyChoices())
-    user = SelectField("Docteur", validators=[validators.InputRequired()], id="user", choices=userChoices())
+    medicament = SelectField("Médicaments", choices = [])
+    molecule = SelectField("Molécules", choices = [])
     submit = SubmitField("Valider")

@@ -1,10 +1,18 @@
 {% extends 'base.html' %} {% block content %}
 <header style="background:#ffffff; color:#2c3e50;">
     <div class="container" id="maincontent" tabindex="-1">
-        <div class="column">
+        <div class="column w-100">
             <h3>Nom de la maladie: {{pathology}}</h3>
             <h3>Nom du docteur: {{username}}</h3>
         </div>
     </div>
 </header>
+{{arrayMed}}
+{{arrayMol}}
+
+<!-- <form method="post" role="medic_form">
+    {{ medic_form.crsf_token }}
+    {{ medic_form.medicament }}
+    {{ medic_form.molecule }}
+</form> -->
 <!-- {% endblock%} -->

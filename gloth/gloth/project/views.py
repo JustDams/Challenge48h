@@ -32,4 +32,23 @@ def medic():
     user_id = (request.form.get("user"))
     username = getUsername(user_id)
 
-    return render_template("medic.html", name="Ynov", pathology=patho, username=username)
+    icd10 = getPathologyIcd10(patho_id)
+    idmolecule = getTreatmentMoleculeId(icd10)
+
+    arrayIdMol = idmolecule.replace("[","").replace("]","").split(" ")
+    arrayMed = []
+    arrayMol = []
+
+    for i in range(0,len(arrayIdMol)-1):
+        arrayMol += getMolecules(arrayIdMol[i])
+        arrayMed += getMedicaments(arrayIdMol[i])
+
+    return render_template(
+        "medic.html",
+        name="Ynov",
+        pathology=patho,
+        username=username, 
+        arraymed = arrayMed, 
+        arrayMol = arrayMol,
+        medic_form = form,
+    )

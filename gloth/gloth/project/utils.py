@@ -1,5 +1,5 @@
 import os
-from .models import Pathology, User
+from .models import *
 
 ### Renvoie la liste de toutes les maladies
 def pathologyChoices():
@@ -76,3 +76,16 @@ def getTreatmentCisName(icd_10x):#pathology name
     name = TreatmentCis.query.filter_by(icd_10=icd_10x).with_entities(TreatmentCis.pathology_name).all()
     name = cleanChar(name)
     return name
+
+def getTreatmentMoleculeId(icd10):
+    id = TreatmentMolecule.query.filter_by(icd_10=icd10).with_entities(TreatmentMolecule.molecule_id).all()
+    id = cleanChar(id)
+    return id
+
+def getMedicaments(id):
+    names = Medication.query.filter_by(molecule_id=id).with_entities(Medication.name).all()
+    return names
+
+def getMolecules(id):
+    names = Molecule.query.filter_by(id=id).with_entities(Molecule.name).all()
+    return names
