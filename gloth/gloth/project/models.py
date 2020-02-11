@@ -55,7 +55,6 @@ class Pathology(db.Model):
     def __str__(self):
         return self.name
 
-
 class Specialty(db.Model):
     """
     Define pathology specialty
@@ -66,7 +65,6 @@ class Specialty(db.Model):
 
     def __repr__(self):
         return "<Specialty(name=%s)>" %(self.name)
-
 
 class PathologySpecialty(db.Model):
     """
@@ -138,3 +136,41 @@ class User(db.Model):
 
     def __repr__(self):
         return "<User(forename=%s, name=%s, rpps=%d, email=%s)>" %(self.forename, self.name, self.rpps,self.email)
+
+class TreatmentClass(db.Model):
+    __tablename__ = "treatment_class"
+
+    class_id = db.Column(db.Integer(), primary_key=True, nullable=False)
+    icd_10 = db.Column(db.String(), nullable=False)
+    pathology_name = db.Column(db.String(), nullable=False)
+
+    def __init__(self, class_id, icd_10, pathology_name) :
+        self.class_id = cis
+        self.icd_10 = pathology_name
+        self.pathology_name = icd_10
+
+
+class TreatmentMolecule(db.Model):
+    __tablename__ = "treatment_molecule"
+
+    molecule_id = db.Column(db.Integer(), primary_key=True, nullable=False)
+    icd_10 = db.Column(db.String(), nullable=False)
+    pathology_name = db.Column(db.String(), nullable=False)
+
+    def __init__(self, molecule_id, icd_10, pathology_name) :
+        self.molecule_id = molecule_id
+        self.icd_10 = icd_10
+        self.pathology_name = pathology_name
+
+
+class TreatmentCis(db.Model):
+    __tablename__="treatment_cis"
+
+    cis = db.Column(db.Integer, primary_key=True, nullable=False)
+    pathology_name = db.Column(db.String(), unique=False)
+    icd_10 =  db.Column(db.String(), unique=False)
+
+    def __init__(self, cis, pathology_name, icd_10) :
+        self.cis = cis
+        self.pathology_name = pathology_name
+        self.icd_10 = icd_10

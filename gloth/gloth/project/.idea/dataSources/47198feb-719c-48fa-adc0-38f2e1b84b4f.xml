@@ -11,12 +11,12 @@
       <Owner>gloth</Owner>
       <IntrospectionStateNumber>553</IntrospectionStateNumber>
       <Current>1</Current>
-      <Relations>sequence|table|16392|16384|1
-sequence|table|16416|16409|1
-sequence|table|16397|16394|1
+      <Relations>sequence|table|16397|16394|1
 sequence|table|16402|16399|1
 sequence|table|16407|16404|1
 sequence|table|16421|16418|1
+sequence|table|16392|16384|1
+sequence|table|16416|16409|1
 </Relations>
     </database>
     <role id="3" parent="1" name="gloth">

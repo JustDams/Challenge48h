@@ -6,6 +6,7 @@ app = Flask(__name__)
 app.config.from_object("project.config.Config")
 
 from .forms import PatientForm, MedicForm
+from .utils import *
 
 @app.route("/", methods=["GET", "POST"])
 @app.route("/index", methods=["GET", "POST"])
@@ -25,8 +26,10 @@ def index():
 
 @app.route('/medic', methods=["GET","POST"])
 def medic():
-
     form = MedicForm(request.form)
     patho_id = (request.form.get("pathology"))
+    patho = getPathologyName(patho_id)
     user_id = (request.form.get("user"))
-    return render_template("medic.html", name="Ynov", pathology=patho_id, user=user_id)
+    username = getUsername(user_id)
+
+    return render_template("medic.html", name="Ynov", pathology=patho, username=username)
